@@ -12,6 +12,7 @@ import io.restassured.http.ContentType;
 import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,6 +44,7 @@ class DemoControllerTest {
   }
 
   // expected to fail because response does not match schema
+  @Disabled
   @Test
   void shouldFailDueToResponse() {
 
@@ -57,6 +59,7 @@ class DemoControllerTest {
   }
 
   // expected to fail because path not correct
+  @Disabled
   @Test
   void shouldFailDueToPath() {
 
@@ -97,6 +100,7 @@ class DemoControllerTest {
     assertThat(result.getEmail()).isEqualTo("email@address.com");
   }
 
+  @Disabled
   @Test
   void shouldFailWithBadRequest() throws JSONException {
 
@@ -137,6 +141,7 @@ class DemoControllerTest {
         .statusCode(400);
   }
 
+  @Disabled
   @Test
   void shouldFailDueInvalidResponse() throws JSONException {
 
@@ -158,6 +163,7 @@ class DemoControllerTest {
         .statusCode(201);
   }
 
+  @Disabled
   @Test
   void shouldFailDueInvalidRequest() throws JSONException {
 

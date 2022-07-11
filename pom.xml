@@ -142,7 +142,7 @@
                 <configuration>
                     <outputDir>${project.basedir}/src/main/resources/openApi</outputDir>
                     <apiDocsUrl>http://localhost:8080/v3/api-docs</apiDocsUrl>
-                    <outputFileName>openapi.json</outputFileName>
+                    <outputFileName>openapi.yml</outputFileName>
                 </configuration>
                 <executions>
                     <execution>
