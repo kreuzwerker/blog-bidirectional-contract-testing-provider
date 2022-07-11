@@ -52,8 +52,6 @@ jobs:
       - name: Download artifacts
         id: download
         uses: actions/download-artifact@v3
-        with:
-          name: ~/download/downloads
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
 
