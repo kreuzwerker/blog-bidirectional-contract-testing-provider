@@ -32,14 +32,33 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn clean verify -B
+    - name: save open api spec
+      uses: actions/upload-artifact@v3
+      with:
+        name: openapi.yml
+        path: src/main/resources/openApi/openapi.yml
+        retention-days: 1
+    - name: save test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report.txt
+        path: target/surefire-reports/de.kreuzwerker.bidirectionalprovider.DemoControllerTest.txt
+        retention-days: 1
 
   pact-publish-oas-action:
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: test-report.txt
+      - uses: actions/download-artifact@v3
+        with:
+          name: openapi.yml
       - uses: actions/checkout@v3
       - uses: pactflow/actions/publish-provider-contract@v0.0.2
         env:
-          oas_file: src/main/resources/openApi/openapi.yml
-          results_file: target/surefire-reports/de.kreuzwerker.bidirectionalprovider.DemoControllerTest.txt
+          oas_file: openapi.yml
+          results_file: test-report.txt
 
   can-i-deploy:
     runs-on: ubuntu-latest
