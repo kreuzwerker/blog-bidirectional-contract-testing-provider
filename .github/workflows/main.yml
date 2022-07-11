@@ -49,14 +49,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-      - uses: actions/checkout@v3
-      - uses: pactflow/actions/publish-provider-contract@v0.0.2
       - uses: actions/download-artifact@v3
         with:
           name: test-report.txt
       - uses: actions/download-artifact@v3
         with:
           name: openapi.yml
+      - uses: pactflow/actions/publish-provider-contract@v0.0.2
         env:
           oas_file: openapi.yml
           results_file: test-report.txt
