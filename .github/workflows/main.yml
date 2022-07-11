@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-report.txt
-        path: target/surefire-reports/de.kreuzwerker.bidirectionalprovider.DemoControllerTest.txt
+        path: target/surefire-reports/de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest.txt
         retention-days: 1
 
   pact-publish-oas-action:
