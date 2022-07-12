@@ -26,7 +26,7 @@ class DemoControllerTest {
 
   @LocalServerPort private int randomServerPort;
 
-  private final String specPath = "src/main/resources/openApi/openapi.json";
+  private final String specPath = "src/main/resources/openApi/openapi.yml";
 
   private final OpenApiValidationFilter validationFilter = new OpenApiValidationFilter(specPath);
 
