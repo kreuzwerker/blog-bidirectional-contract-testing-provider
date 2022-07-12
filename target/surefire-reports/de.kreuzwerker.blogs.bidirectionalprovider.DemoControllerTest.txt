@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 2.813 s - in de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest

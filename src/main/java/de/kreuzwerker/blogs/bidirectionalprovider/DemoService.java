@@ -22,9 +22,9 @@ public class DemoService {
         switch(departmentId) {
             case INVALIDID -> {
                 // create a response that will not match the schema defintion, because email is a required field
-                Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID()).build();
-                Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID()).build();
-                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").employeeId(UUID.randomUUID()).build();
+                Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
+                Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
+                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").employeeId(UUID.randomUUID().toString()).build();
                 return List.of(emp1, emp2, emp3);
             }
             case UNKNOWNID -> {
@@ -37,9 +37,9 @@ public class DemoService {
             }
             default -> {
                 // create a response that matches the schema and is harmless
-                Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID()).build();
-                Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID()).build();
-                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").email("robin@doe.com").employeeId(UUID.randomUUID()).build();
+                Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
+                Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
+                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").email("robin@doe.com").employeeId(UUID.randomUUID().toString()).build();
                 return List.of(emp1, emp2, emp3);
             }
         }
@@ -59,12 +59,12 @@ public class DemoService {
                 return Employee.builder()
                   .firstName(employee.getFirstName())
                   .lastName(employee.getLastName())
-                  .employeeId(UUID.randomUUID())
+                  .employeeId(UUID.randomUUID().toString())
                   .build();
             }
             default -> {
                 return Employee.builder()
-                  .employeeId(UUID.randomUUID())
+                  .employeeId(UUID.randomUUID().toString())
                   .firstName(employee.getFirstName())
                   .lastName(employee.getLastName())
                   .email(employee.getEmail())

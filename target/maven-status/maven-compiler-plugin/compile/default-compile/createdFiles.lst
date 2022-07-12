@@ -1,0 +1,9 @@
+de/kreuzwerker/blogs/bidirectionalprovider/exception/CustomException.class
+de/kreuzwerker/blogs/bidirectionalprovider/objects/EmployeesResult$EmployeesResultBuilder.class
+de/kreuzwerker/blogs/bidirectionalprovider/objects/Employee$EmployeeBuilder.class
+de/kreuzwerker/blogs/bidirectionalprovider/ProviderApplication.class
+de/kreuzwerker/blogs/bidirectionalprovider/DemoController.class
+de/kreuzwerker/blogs/bidirectionalprovider/config/ObjectMapperConfiguration.class
+de/kreuzwerker/blogs/bidirectionalprovider/objects/Employee.class
+de/kreuzwerker/blogs/bidirectionalprovider/objects/EmployeesResult.class
+de/kreuzwerker/blogs/bidirectionalprovider/DemoService.class
