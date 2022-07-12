@@ -27,7 +27,6 @@ class DemoControllerTest {
   @LocalServerPort private int randomServerPort;
 
   private final String specPath = "src/main/resources/openApi/openapi.yml";
-
   private final OpenApiValidationFilter validationFilter = new OpenApiValidationFilter(specPath);
 
   @Test
@@ -44,7 +43,6 @@ class DemoControllerTest {
   }
 
   // expected to fail because response does not match schema
-  @Disabled
   @Test
   void shouldFailDueToResponse() {
 
@@ -59,7 +57,6 @@ class DemoControllerTest {
   }
 
   // expected to fail because path not correct
-  @Disabled
   @Test
   void shouldFailDueToPath() {
 
@@ -100,7 +97,6 @@ class DemoControllerTest {
     assertThat(result.getEmail()).isEqualTo("email@address.com");
   }
 
-  @Disabled
   @Test
   void shouldFailWithBadRequest() throws JSONException {
 
@@ -113,11 +109,11 @@ class DemoControllerTest {
             .withLevelResolver(
                 LevelResolver.create()
                     .withLevel("validation.request", Level.ERROR)
-                    .withLevel("validation.schema.required", Level.INFO)
-                    .withLevel("validation.response.body.missing", Level.INFO)
-                    .withLevel("validation.response.body.schema.additionalProperties", Level.INFO)
-                    .withLevel("validation.response.body.schema.required", Level.INFO)
-                    .withLevel("validation.response", Level.ERROR)
+                    .withLevel("validation.schema.required", Level.IGNORE)
+                    .withLevel("validation.response.body.missing", Level.IGNORE)
+                    .withLevel("validation.response.body.schema.additionalProperties", Level.IGNORE)
+                    .withLevel("validation.response.body.schema.required", Level.IGNORE)
+                    .withLevel("validation.response", Level.IGNORE)
                     .build())
             .build();
 
@@ -141,7 +137,6 @@ class DemoControllerTest {
         .statusCode(400);
   }
 
-  @Disabled
   @Test
   void shouldFailDueInvalidResponse() throws JSONException {
 
@@ -163,7 +158,6 @@ class DemoControllerTest {
         .statusCode(201);
   }
 
-  @Disabled
   @Test
   void shouldFailDueInvalidRequest() throws JSONException {
 
