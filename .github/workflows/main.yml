@@ -32,41 +32,19 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn clean verify -B
-    - name: Save open API spec file
-      uses: actions/upload-artifact@v3
-      with:
-        name: openapi.yml
-        path: src/main/resources/openApi/openapi.yml
-        retention-days: 1
-    - name: Save test report
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-report.txt
-        path: target/surefire-reports/de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest.txt
-        retention-days: 1
-
-  pact-publish-oas-action:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Download artifacts
-        id: download
-        uses: actions/download-artifact@v3
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
-
-      - uses: pactflow/actions/publish-provider-contract@v0.0.2
-        env:
-          oas_file: openapi.yml
-          results_file: test-report.txt
-          pact_broker: ${{ env.PACT_BROKER_BASE_URL }}
-          pact_broker_token: ${{ env.PACT_BROKER_TOKEN }}
-          application_name: ${{ env.PACTICIPANT }}
-          version: ${{ env.VERSION }}
+    - name: Publish provider contract
+      uses: pactflow/actions/publish-provider-contract@v0.0.2
+      env:
+        oas_file: src/main/resources/openApi/openapi.yml
+        results_file: target/surefire-reports/de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest.txt
+        pact_broker: ${{ env.PACT_BROKER_BASE_URL }}
+        pact_broker_token: ${{ env.PACT_BROKER_TOKEN }}
+        application_name: ${{ env.PACTICIPANT }}
+        version: ${{ env.VERSION }}
 
   can-i-deploy:
     runs-on: ubuntu-latest
-    needs: pact-publish-oas-action
+    needs: test
     steps:
       - uses: actions/checkout@v2
       - run: docker pull pactfoundation/pact-cli:latest
