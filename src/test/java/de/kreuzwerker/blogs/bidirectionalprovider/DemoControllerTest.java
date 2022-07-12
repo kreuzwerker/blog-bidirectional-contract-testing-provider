@@ -113,7 +113,7 @@ class DemoControllerTest {
                     .withLevel("validation.response.body.missing", Level.IGNORE)
                     .withLevel("validation.response.body.schema.additionalProperties", Level.IGNORE)
                     .withLevel("validation.response.body.schema.required", Level.IGNORE)
-                    .withLevel("validation.response", Level.IGNORE)
+                    .withLevel("validation.response", Level.ERROR)
                     .build())
             .build();
 
