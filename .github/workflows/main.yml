@@ -55,7 +55,6 @@ jobs:
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
 
-      - uses: actions/checkout@v3
       - uses: pactflow/actions/publish-provider-contract@v0.0.2
         env:
           oas_file: openapi.yml
